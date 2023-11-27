@@ -1,0 +1,14 @@
+controllers:
+    resource:
+        path: ../src/Controller/
+        namespace: App\Controller
+    type: attribute
+app_login:
+    path: /login
+    controller: App\Controller\SecurityController::login
+app_home:
+    path: /
+    controller: App\Controller\HomeController::index
+afficher_nom_utilisateur:
+    path: '/afficher-nom-utilisateur/{ideuth}'
+    controller: 'App\Controller\VotreController::afficherNomUtilisateur'

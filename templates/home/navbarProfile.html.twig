@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport"    content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="">
+	<meta name="author"      content="Sergey Pozhilov (GetTemplate.com)">
+	
+	
+	<link rel="shortcut icon" href="assets/images/gt_favicon.png">
+
+
+
+
+ 
+    {% block stylesheets %}
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootswatch@5.1.3/dist/united/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootswatch@5.1.3/dist/united/_variables.scss">
+   <style>
+   {# ****************body****************** #}
+       
+         {# ****************jumbotron****************** #}
+ .jumbotron h1 {
+            font-size: 3em; /* Ajustez la taille de la police selon vos préférences */
+            margin-bottom: 20px; /* Espace en bas du titre */
+            
+            font-weight: bold; /* Mettez en gras si nécessaire */
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Ombre du texte */
+             background: linear-gradient(to right, #ff8a00, #ffcd00, #4caf50); /* Dégradé de couleurs en fond */
+            -webkit-background-clip: text; /* Propriété spécifique à WebKit pour appliquer le dégradé au texte */
+            
+            /* Autres styles de texte si nécessaire */
+        }
+
+        /* Ajoutez d'autres styles au besoin */
+
+        @media (max-width: 768px) {
+            .jumbotron h1 {
+                font-size: 2em; /* Ajustez la taille de la police pour les écrans plus petits */
+            }
+        }
+        .c1{
+            background-image: url('{{ asset('assets/images/im3.jpeg') }}');
+
+        }
+        
+
+        /* Style pour le logo lui-même */
+        .logo-img {
+            width: 60px; /* Définissez la largeur du logo selon vos besoins */
+            height: 60px; /* Garantit que l'aspect ratio de l'image est préservé */
+            border-radius: 50%; /* Applique un bord arrondi pour un effet de cercle */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Ajoute une légère ombre */
+        }
+        .jumbotron {
+    background-image: url('{{ asset('assets/images/im4.jpeg') }}');
+    background-size: cover;
+    color: white;
+    animation: fadeIn 1s ease-in-out; /* Use fadeIn for entrance animation */
+    height: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.5s ease;
+    border-radius: 20px;
+    box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.5);
+}
+
+.jumbotron:hover {
+    background-color: #343a40;
+    animation: scaleOut 1s ease-in-out; /* Use scaleOut for exit animation on hover */
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes scaleOut {
+    0%, 100% {
+        transform: scale(1);
+        background-color: #28a745;
+    }
+    50% {
+        transform: scale(0.8);
+        background-color: #007bff;
+    }
+
+
+}
+
+{# ****************card****************** #}
+.card{
+  margin-top:20px;
+}
+ 
+
+  {# ........................sidebar................................ #}
+ body {
+            background-color: #f8f9fa;
+        }
+
+        #sidebar {
+            background-color: #343a40;
+            color: white;
+            padding: 15px;
+            height: 100vh;
+        }
+
+        #rightbar {
+            background-color: #343a40;
+            color: white;
+            padding: 15px;
+            height: 100vh;
+        }
+
+        #content {
+            padding: 15px;
+        }
+
+    </style>
+    {% endblock %}
+    {% block javascripts %}
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+     
+
+    {% endblock %}
+	  
+</head>
+
+<body class="home" >
+
+   {% block body %}
+   
+
+   {# ------------------Navbar------------------------ #}
+
+<nav class="navbar navbar-expand-lg bg-dark" data-bs-theme="light">
+  <div class="container-fluid">
+      <img class="logo-img" src="{{ asset('assets/images/c2.png') }}" alt="Description de l'image">
+ 
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarColor02">
+ 
+      <ul class="navbar-nav me-auto">
+         
+          <li  class="nav-item"><a class="nav-link text-white" href="{{ path('app_home') }}">Home</a></li>
+ <li class="nav-item">
+            <a class="nav-link text-white" href="#ab">About</a>
+        </li>
+        
+          <li class="nav-item">
+            <a class="nav-link text-white" href="{{ path('app_contact') }}">Contact</a>
+        </li>
+       
+    {% if is_granted('ROLE_USER') %}
+        <li class="nav-item">
+            <a class="nav-link text-white" href="{{ path('app_logout') }}">Sign out</a>
+        </li>
+         <li class="nav-item dropdown">
+          <a class="nav-link text-white dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Profile</a>
+          <div class="dropdown-menu">
+            <a class="dropdown-item" href="{{ path('app_register') }}"> Profile</a>
+            <a class="dropdown-item" href="{{ path('login') }}">Annonce</a>
+            {# <a class="dropdown-item" href="#">Something else here</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="#">Separated link</a> #}
+          </div>
+          
+        </li> 
+          	  {% else %}
+        <li class="nav-item dropdown">
+          <a class="nav-link text-white dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Connexion</a>
+          <div class="dropdown-menu">
+            <a class="dropdown-item" href="{{ path('app_register') }}">SIGN IN</a>
+            <a class="dropdown-item" href="{{ path('login') }}">LOGIN</a>
+            {# <a class="dropdown-item" href="#">Something else here</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="#">Separated link</a> #}
+          </div>
+        </li> 
+           	  {% endif %}
+
+
+   
+    {% if is_granted('ROLE_ADMIN') %}
+        <li class="nav-item">
+            <a class="nav-link text-white" href="{{ path('admin') }}">Dashboard</a>
+        </li>
+       
+          
+ {% endif %}
+    
+   </ul>
+      
+     
+    </div>
+  </div>
+</nav>
+
+ <div class="container-fluid">
+        <div class="row">
+            <!-- Sidebar -->
+            <div class="col-md-3" id="sidebar">
+                 <div> {% include 'home/sidebar-left.html.twig' %}</div>
+            </div>
+
+            <!-- Content -->
+             <div class="col-md-6" id="content">
+                    <div> {% include 'home/contenuprofile.html.twig' %}</div>
+                <!-- Add your main content here -->
+            </div>
+      
+
+            <!-- Right Bar -->
+            <div class="col-md-3" id="rightbar">
+           
+                    <div> {% include 'home/sidebar-right.html.twig' %}</div>
+                <!-- Add your right bar content here -->
+            </div>
+        </div>
+    </div>
+
+    
+{# <div> {% include 'home/sidebar-left.html.twig' %}</div> #}
+
+
+{% endblock %}

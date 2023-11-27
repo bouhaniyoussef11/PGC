@@ -1,0 +1,13 @@
+{# {{ form_start(form) }}
+    {{ form_widget(form) }}
+    <button class="btn">{{ button_label|default('Save') }}</button>
+{{ form_end(form) }} #}
+
+
+{{ form_start(form) }}
+    {{ form_row(form.titre, {'label': 'Titre', 'attr': {'class': 'form-control'}}) }}
+    {{ form_row(form.contenu, {'label': 'Image', 'attr': {'class': 'form-control', 'type': 'file'}}) }}
+    {{ form_row(form.date, {'label': 'Date', 'attr': {'class': 'form-control'}}) }}
+    
+    <button class="btn">{{ button_label|default('Save') }}</button>
+{{ form_end(form) }}
